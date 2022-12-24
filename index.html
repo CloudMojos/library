@@ -6,24 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
-        <h1 class="logo">library</h1>
+        <h1 class="logo">📚 library</h1>
         <ul class="links">
-            <li class="clickable">Home</li>
-            <li class="clickable">About</li>
-            <li class="clickable">Log in</li>
+            <!-- <li class="clickable">🏠 Home</li>
+            <li class="clickable">❓ About</li>
+            <li class="clickable">🚪 Log in</li> -->
+            <li class="clickable">🚧 Under development</li>
         </ul>
     </header>
     <button data-modal-target="#modal" class="add clickable">&plus;</button>
     <div class="modal" id="modal">
         <div class="modal-body">
-            <form action="#">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum accusantium quae explicabo voluptatem eos, dolorem placeat alias labore, eligendi nam, delectus a blanditiis? Dolorum cum nostrum at accusamus laudantium quis libero expedita quae molestias mollitia aspernatur repudiandae aliquam nihil laborum eveniet ducimus tempore ab tenetur, perspiciatis ipsum cumque dolore, eligendi, fuga in. Aliquid minima voluptas accusantium assumenda, quod asperiores accusamus ea laboriosam ab, qui rerum deleniti temporibus consequatur laborum magnam ipsa dolorem reiciendis? Perspiciatis, hic harum in sunt corporis vitae!
+            <form action="#" id="add">
+                <h3 class="form-title">📑 Add New Book</h3>
+                <input type="text" name="book-title" id="book-title" placeholder="Title" required>
+                <input type="text" name="book-author" id="book-author" placeholder="Author" required>
+                <input type="number" name="book-pages" id="book-pages" placeholder="Pages" required>
+                <div class="control-row">
+                    <p class="read-label">Have you read it already?</p>
+                    <input class="clickable book-read" type="checkbox" name="book-read" id="book-read">
+                </div>
+                <div class="control-row">
+                    <button class="clickable module-button" type="reset" clear>🧹</button>
+                    <button class="clickable module-button" type="submit" add>🚀</button>
+                </div>
             </form>
         </div>
     </div>
     <div id="overlay"></div>
+    <section>
+        <div class="book-card">
+            <div class="front" style="background-color: skyblue;">
+                <div class="book-card-separation">
+                    <p class="title">1984</p>
+                    <p>by</p>
+                    <p class="author">George Orwell</p>
+                </div>
+                <div class="book-card-separation">
+                    <p class="pages">328 pages</p>
+                    <button class="read clickable" onclick="buttonClick(event)">READ</button>
+                </div>
+            </div>
+            <div class="back" style="background-color: pink;">
+                <div class="book-card-separation">
+                    <button class="delete" onclick="buttonClick(event)">✖</button>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
