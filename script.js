@@ -82,87 +82,89 @@ addBookForm.addEventListener('submit', (e) => {
 
 
 // Adding Book to the page
-// Book constructor
-function Book (title, author, pages, haveRead) {
-    this.title = title
-    this.author = author
-    this.pages = pages 
-    this.haveRead = haveRead
-}
-
-Book.prototype.createBookCard = function () {
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    by = document.createElement('p')
-    by.appendChild(document.createTextNode('by'))
-    // The card container
-    card = document.createElement('div')
-    card.classList.add('book-card')
-
-    // The front of the card
-    front = document.createElement('div')
-    front.classList.add('front')
-    color = colors[randomIndex]
-    front.style.backgroundColor = color + 'aa'
-
-    // Children of front
-    titleAndAuthor = document.createElement('div')
-    titleAndAuthor.classList.add('book-card-separation')
-    pagesAndRead = document.createElement('div')
-    pagesAndRead.classList.add('book-card-separation')
-
-    // Children of titleAndAuthor
-    titleElement = document.createElement('p')
-    titleElement.classList.add('title')
-    titleElement.appendChild(document.createTextNode(this.title))
-    authorElement = document.createElement('p')
-    authorElement.classList.add('author')
-    authorElement.appendChild(document.createTextNode(this.author))
-
-    // Children of pagesAndRead
-    pagesElement = document.createElement('p')
-    pagesElement.classList.add('pages')
-    buttonReadElement = document.createElement('button')
-    if (!this.haveRead) {
-        buttonReadElement.classList.add('read', 'clickable')
+// Book class
+class Book {
+    constructor(title, author, pages, haveRead) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.haverRead = haveRead
     }
 
-    // The back of the card
-    back = document.createElement('div')
-    back.classList.add('back')
-    back.style.backgroundColor = color
+    createBookCard() {
+        const randomIndex = Math.floor(Math.random() * colors.length);
+        by = document.createElement('p')
+        by.appendChild(document.createTextNode('by'))
+        // The card container
+        card = document.createElement('div')
+        card.classList.add('book-card')
 
-    // Children of back
-    deleteDiv = document.createElement('div')
-    deleteDiv.classList.add('book-card-separation')
+        // The front of the card
+        front = document.createElement('div')
+        front.classList.add('front')
+        color = colors[randomIndex]
+        front.style.backgroundColor = color + 'aa'
 
-    // Children of deleteDiv
-    deleteBtn = document.createElement('button')
-    deleteBtn.classList.add('delete')
-    deleteBtn.appendChild(document.createTextNode('✖'))
-    deleteBtn.setAttribute("onclick", "buttonClick(event); deleteBook();")
-    
-    // Appending to back
-    deleteDiv.appendChild(deleteBtn)
-    back.appendChild(deleteDiv)
+        // Children of front
+        titleAndAuthor = document.createElement('div')
+        titleAndAuthor.classList.add('book-card-separation')
+        pagesAndRead = document.createElement('div')
+        pagesAndRead.classList.add('book-card-separation')
 
-    // Adding the nodes to the DOM
-    // titleAndAuthor 
-    titleAndAuthor.appendChild(titleElement)
-    titleAndAuthor.appendChild(authorElement)
-    titleAndAuthor.insertBefore(by, authorElement)
-    // pagesAndRead
-    pagesAndRead.appendChild(pagesElement)
-    pagesAndRead.appendChild(buttonReadElement)
-    // front
-    front.appendChild(titleAndAuthor)
-    front.appendChild(pagesAndRead)
-    // card
-    card.appendChild(front)
-    card.appendChild(back)
-    // bookSection/section element
-    bookSection.appendChild(card)
+        // Children of titleAndAuthor
+        titleElement = document.createElement('p')
+        titleElement.classList.add('title')
+        titleElement.appendChild(document.createTextNode(this.title))
+        authorElement = document.createElement('p')
+        authorElement.classList.add('author')
+        authorElement.appendChild(document.createTextNode(this.author))
 
-    rotateCards()
+        // Children of pagesAndRead
+        pagesElement = document.createElement('p')
+        pagesElement.classList.add('pages')
+        buttonReadElement = document.createElement('button')
+        if (!this.haveRead) {
+            buttonReadElement.classList.add('read', 'clickable')
+        }
+
+        // The back of the card
+        back = document.createElement('div')
+        back.classList.add('back')
+        back.style.backgroundColor = color
+
+        // Children of back
+        deleteDiv = document.createElement('div')
+        deleteDiv.classList.add('book-card-separation')
+
+        // Children of deleteDiv
+        deleteBtn = document.createElement('button')
+        deleteBtn.classList.add('delete')
+        deleteBtn.appendChild(document.createTextNode('✖'))
+        deleteBtn.setAttribute("onclick", "buttonClick(event); deleteBook();")
+        
+        // Appending to back
+        deleteDiv.appendChild(deleteBtn)
+        back.appendChild(deleteDiv)
+
+        // Adding the nodes to the DOM
+        // titleAndAuthor 
+        titleAndAuthor.appendChild(titleElement)
+        titleAndAuthor.appendChild(authorElement)
+        titleAndAuthor.insertBefore(by, authorElement)
+        // pagesAndRead
+        pagesAndRead.appendChild(pagesElement)
+        pagesAndRead.appendChild(buttonReadElement)
+        // front
+        front.appendChild(titleAndAuthor)
+        front.appendChild(pagesAndRead)
+        // card
+        card.appendChild(front)
+        card.appendChild(back)
+        // bookSection/section element
+        bookSection.appendChild(card)
+
+        rotateCards()
+    }   
 }
 
 function addBook () {
