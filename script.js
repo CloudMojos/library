@@ -93,51 +93,51 @@ class Book {
 
     createBookCard() {
         const randomIndex = Math.floor(Math.random() * colors.length);
-        by = document.createElement('p')
+        let by = document.createElement('p')
         by.appendChild(document.createTextNode('by'))
         // The card container
-        card = document.createElement('div')
+        let card = document.createElement('div')
         card.classList.add('book-card')
 
         // The front of the card
-        front = document.createElement('div')
+        let front = document.createElement('div')
         front.classList.add('front')
-        color = colors[randomIndex]
+        let color = colors[randomIndex]
         front.style.backgroundColor = color + 'aa'
 
         // Children of front
-        titleAndAuthor = document.createElement('div')
+        let titleAndAuthor = document.createElement('div')
         titleAndAuthor.classList.add('book-card-separation')
-        pagesAndRead = document.createElement('div')
+        let pagesAndRead = document.createElement('div')
         pagesAndRead.classList.add('book-card-separation')
 
         // Children of titleAndAuthor
-        titleElement = document.createElement('p')
+        let titleElement = document.createElement('p')
         titleElement.classList.add('title')
         titleElement.appendChild(document.createTextNode(this.title))
-        authorElement = document.createElement('p')
+        let authorElement = document.createElement('p')
         authorElement.classList.add('author')
         authorElement.appendChild(document.createTextNode(this.author))
 
         // Children of pagesAndRead
-        pagesElement = document.createElement('p')
+        let pagesElement = document.createElement('p')
         pagesElement.classList.add('pages')
-        buttonReadElement = document.createElement('button')
+        let buttonReadElement = document.createElement('button')
         if (!this.haveRead) {
             buttonReadElement.classList.add('read', 'clickable')
         }
 
         // The back of the card
-        back = document.createElement('div')
+        let back = document.createElement('div')
         back.classList.add('back')
         back.style.backgroundColor = color
 
         // Children of back
-        deleteDiv = document.createElement('div')
+        let deleteDiv = document.createElement('div')
         deleteDiv.classList.add('book-card-separation')
 
         // Children of deleteDiv
-        deleteBtn = document.createElement('button')
+        let deleteBtn = document.createElement('button')
         deleteBtn.classList.add('delete')
         deleteBtn.appendChild(document.createTextNode('✖'))
         deleteBtn.setAttribute("onclick", "buttonClick(event); deleteBook();")
